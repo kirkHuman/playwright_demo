@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
+    "report": "npx playwright show-report",
     "test:firefox": "npx playwright test --browser=firefox",
     "test:webkit": "npx playwright test --browser=webkit",
     "test:chromium": "npx playwright test --browser=chromium",
