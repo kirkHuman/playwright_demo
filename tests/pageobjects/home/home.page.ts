@@ -33,8 +33,8 @@ export class HomePage extends PlaywrightDevPage {
     await this.emailInput.fill(email, { timeout: 5000 });
     await this.passwordInput.focus();
     await this.passwordInput.fill(password, { timeout: 5000 });
-    //await this.signInButton.focus();
-    //await this.signInButton.waitFor();
-    await this.signInButton.click({ delay: 1000 });
+    expect(async () => {
+      await this.signInButton.click();
+    }).toPass();
   }
 }
