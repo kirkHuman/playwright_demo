@@ -48,13 +48,6 @@ export class RegistrationPage extends PlaywrightDevPage {
     await this.howDidYouHearAboutUs.selectOption({
       index: 2,
     });
-    //try {
-    //expect.soft(this.subscribeCheckbox).toBeVisible();
-    //await this.subscribeCheckbox.click();
-    //   console.log('Checkbox checked');
-    //  } catch (error) {}
-    // expect(async () => {
     await this.signUpButton.click();
-    //}).toPass();
   }
 }
