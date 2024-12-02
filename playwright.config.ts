@@ -23,7 +23,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 5 : undefined,
-  reporter: process.env.CI ? 'list' : 'html',
+  reporter: process.env.CI ? 'html' : 'html',
   use: {
     baseURL: 'https://www.google.com',
     trace: 'on-first-retry',
