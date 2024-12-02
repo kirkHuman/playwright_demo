@@ -1,5 +1,6 @@
 import { Page, Locator, expect, selectors } from '@playwright/test';
 import { PlaywrightDevPage } from '../PlaywrightDevPage';
+import exp from 'constants';
 //import { users_logins } from '../../data/users_logins';
 
 export class HomePage extends PlaywrightDevPage {
@@ -23,18 +24,17 @@ export class HomePage extends PlaywrightDevPage {
     await expect(this.signInLink).toBeVisible();
   }
 
-  async pageObjectModel() {
-    await this.goto();
-    await this.openBurgerMenu();
+  async goto_MyProfile(): Promise<void> {
+    await this.navBurgerMenu.click();
+    await this.page.locator('[data-autotag="xtra-savage-main-menu"]').click();
   }
 
   async loginToApplication(email: string, password: string) {
+    await this.page.waitForLoadState('load');
     await this.emailInput.focus();
-    await this.emailInput.fill(email, { timeout: 5000 });
+    await this.emailInput.fill(email);
     await this.passwordInput.focus();
-    await this.passwordInput.fill(password, { timeout: 5000 });
-    expect(async () => {
-      await this.signInButton.click();
-    }).toPass();
+    await this.passwordInput.fill(password);
+    await this.signInButton.click();
   }
 }

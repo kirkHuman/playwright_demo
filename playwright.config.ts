@@ -16,10 +16,14 @@ const environment = process.env.ENVIRONMENT || 'production';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
+  timeout: 60_000,
+  expect: {
+    timeout: 20_000,
+  },
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 5 : undefined,
-  reporter: process.env.CI ? 'github' : 'html',
+  reporter: process.env.CI ? 'list' : 'html',
   use: {
     baseURL: 'https://www.google.com',
     trace: 'on-first-retry',

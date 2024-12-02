@@ -2,7 +2,7 @@ import { expect, type Locator, type Page } from '@playwright/test';
 import { signIn_textes } from '../expected_results/sign_in';
 import { setBrandDetails } from '../../utils/brand';
 
-const country = process.env.COUNTRY?.toLocaleLowerCase() || 'none';
+const country = process.env.COUNTRY?.toLowerCase() || 'none';
 
 export class PlaywrightDevPage {
   readonly page: Page;
@@ -31,14 +31,9 @@ export class PlaywrightDevPage {
     await expect(this.signInLink).toBeVisible();
   }
 
-  async pageObjectModel() {
-    await this.goto();
-    await this.openBurgerMenu();
-  }
-
   async openApplication() {
     try {
-      await this.page.goto('/');
+      await this.page.goto('/', { waitUntil: 'load' });
       await setBrandDetails(this.page.url());
     } catch (error) {
       console.log('Error from openApplication: ' + error);
